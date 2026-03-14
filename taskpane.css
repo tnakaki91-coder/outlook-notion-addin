@@ -1,0 +1,192 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  color: #1a1a1a;
+  background: #f8f8f8;
+  min-height: 100vh;
+}
+
+#app {
+  padding: 16px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.view { display: block; }
+.hidden { display: none !important; }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1a1a1a;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #555;
+  transition: background 0.2s;
+}
+.icon-btn:hover { background: #e8e8e8; }
+
+.form-group { margin-bottom: 14px; }
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1a1a1a;
+  background: white;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2383e2;
+  box-shadow: 0 0 0 3px rgba(35, 131, 226, 0.1);
+}
+
+.form-group small {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  margin-top: 4px;
+}
+.form-group small a { color: #2383e2; text-decoration: none; }
+.form-group textarea { resize: vertical; min-height: 70px; }
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #2383e2;
+  cursor: pointer;
+}
+.checkbox-group label { cursor: pointer; font-size: 13px; color: #444; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 6px;
+}
+.btn-primary { background: #2383e2; color: white; }
+.btn-primary:hover { background: #1a6fc4; }
+.btn-primary:disabled { background: #a0c4f1; cursor: not-allowed; }
+.btn-secondary { background: white; color: #2383e2; border: 1.5px solid #2383e2; }
+.btn-secondary:hover { background: #f0f6ff; }
+.btn-ghost { background: transparent; color: #666; border: 1.5px solid #ddd; }
+.btn-ghost:hover { background: #f5f5f5; }
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.email-preview {
+  background: white;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+.email-from { font-size: 12px; color: #888; margin-bottom: 3px; }
+.email-subject {
+  font-weight: 600;
+  font-size: 13px;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-box {
+  background: #fffbeb;
+  border: 1.5px solid #f59e0b;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+.success-box {
+  background: #f0fdf4;
+  border: 1.5px solid #22c55e;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+.success-icon { font-size: 32px; margin-bottom: 8px; }
+.success-box p { color: #15803d; font-weight: 600; margin-bottom: 12px; }
+.error-box {
+  background: #fef2f2;
+  border: 1.5px solid #ef4444;
+  border-radius: 8px;
+  padding: 12px;
+}
+.error-box p { color: #dc2626; margin-bottom: 8px; font-size: 13px; }
+.status-msg {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+}
+.status-msg.success { background: #f0fdf4; color: #15803d; border: 1px solid #86efac; }
+.status-msg.error { background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5; }
