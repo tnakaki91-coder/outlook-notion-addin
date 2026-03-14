@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notion Task Creator</title>
+  <link rel="stylesheet" href="taskpane.css"/>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Settings View -->
+    <div id="settings-view" class="view hidden">
+      <div class="header">
+        <div class="logo">⚙️ Settings</div>
+        <button id="back-btn" class="icon-btn">← Back</button>
+      </div>
+      <div class="form-group">
+        <label for="notion-token">Notion Integration Token</label>
+        <input type="password" id="notion-token" placeholder="secret_xxxxxxxxxxxx" />
+        <small>Create an integration at <a href="https://www.notion.so/my-integrations" target="_blank">notion.so/my-integrations</a></small>
+      </div>
+      <div class="form-group">
+        <label for="notion-db-id">Notion Database ID</label>
+        <input type="text" id="notion-db-id" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
+        <small>Found in your Notion database URL after the workspace name</small>
+      </div>
+      <div class="form-group">
+        <label for="status-property">Status Property Name</label>
+        <input type="text" id="status-property" placeholder="Status" />
+        <small>The name of the Status property in your database</small>
+      </div>
+      <div class="form-group">
+        <label for="default-status">Default Status Value</label>
+        <input type="text" id="default-status" placeholder="To Do" />
+      </div>
+      <div class="form-group">
+        <label for="assignee-property">Assignee Property Name (optional)</label>
+        <input type="text" id="assignee-property" placeholder="Assignee" />
+      </div>
+      <button id="save-settings-btn" class="btn btn-primary">Save Settings</button>
+      <div id="settings-status" class="status-msg hidden"></div>
+    </div>
+
+    <!-- Main View -->
+    <div id="main-view" class="view">
+      <div class="header">
+        <div class="logo">
+          <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="18" fill="black"/>
+            <path d="M22 18.5C25.5 16 30.5 15.5 34 18L74 46C77 48 77.5 52 75 55L56 79C53.5 82 49 82.5 46 80L22 62C19 60 18 56 20 53V22C20 20.5 20.5 19.5 22 18.5Z" fill="white"/>
+          </svg>
+          Add to Notion
+        </div>
+        <button id="settings-btn" class="icon-btn" title="Settings">⚙️</button>
+      </div>
+
+      <div id="not-configured" class="info-box hidden">
+        <p>Please configure your Notion integration first.</p>
+        <button id="go-to-settings-btn" class="btn btn-secondary">Open Settings</button>
+      </div>
+
+      <div id="email-preview" class="email-preview hidden">
+        <div class="email-from" id="preview-from"></div>
+        <div class="email-subject" id="preview-subject"></div>
+      </div>
+
+      <div id="task-form" class="hidden">
+        <div class="form-group">
+          <label for="task-title">Task Title</label>
+          <input type="text" id="task-title" placeholder="Enter task title..."/>
+        </div>
+        <div class="form-group">
+          <label for="task-description">Description (optional)</label>
+          <textarea id="task-description" rows="3" placeholder="Add more context..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="task-due-date">Due Date (optional)</label>
+          <input type="date" id="task-due-date"/>
+        </div>
+        <div class="form-group">
+          <label for="task-priority">Priority (optional)</label>
+          <select id="task-priority">
+            <option value="">-- None --</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="include-email-link" checked/>
+          <label for="include-email-link">Include email link in card</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="include-body-preview" checked/>
+          <label for="include-body-preview">Include email body preview</label>
+        </div>
+        <button id="create-task-btn" class="btn btn-primary">
+          <span id="btn-label">➕ Create Notion Task</span>
+          <span id="btn-spinner" class="spinner hidden"></span>
+        </button>
+      </div>
+
+      <div id="success-msg" class="success-box hidden">
+        <div class="success-icon">✅</div>
+        <p>Task created successfully!</p>
+        <a id="notion-link" href="#" target="_blank" class="btn btn-secondary">Open in Notion →</a>
+        <button id="create-another-btn" class="btn btn-ghost">Create Another</button>
+      </div>
+
+      <div id="error-msg" class="error-box hidden">
+        <p id="error-text"></p>
+        <button id="dismiss-error-btn" class="btn btn-ghost">Dismiss</button>
+      </div>
+    </div>
+  </div>
+  <script src="taskpane.js"></script>
+</body>
+</html>
